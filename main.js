@@ -9,22 +9,22 @@
 
         document.getElementById("name").innerHTML=data.name;
         document.getElementById("id").innerHTML=data.id;
-       
-       
-        data.moves.forEach(element => {
-           
-            var listName = [];
-            listName.push(element.move.name);
-            console.log(element.move.name);
-                  
-        });
-
-        
+              
         //var imageArea = getElementById("image");
+        //create img and append it to the body
         const img = document.createElement("img");
         img.setAttribute("src" ,"");
         img.src = data.sprites.front_default;
         document.body.appendChild(img);
+
+        // get the list with the moves
+        var listName = [];
+        data.moves.forEach(element => { 
+            listName.push(element.move.name);                  
+        });
+        var x = listName.toString();
+        document.getElementById("moves").innerHTML=x;
+
 
       };
     
