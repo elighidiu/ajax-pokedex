@@ -1,8 +1,11 @@
 (() => {
   
     async function dataPoke(poke){
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`)
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`);
+        const responseSpecies = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${poke}`);           
         const data = await response.json();
+        const dataSpecies = await responseSpecies.json();
+        
         console.log(data.name);
         console.log(data.id);
         console.log(data.sprites.front_default);
@@ -10,28 +13,26 @@
         document.getElementById("name").innerHTML=data.name;
         document.getElementById("id").innerHTML=data.id;
               
-        //var imageArea = getElementById("image");
+        let imageArea = document.getElementById("image"); 
         //create img and append it to the body
         const img = document.createElement("img");
-        img.setAttribute("src" ,"");
         img.src = data.sprites.front_default;
-        document.body.appendChild(img);
+        imageArea.appendChild(img);
 
         // get the list with the moves
-        var listName = [];
+       let ulArea = document.getElementById("movesList");
         data.moves.forEach(element => { 
-            listName.push(element.move.name);                  
+            const listElement = document.createElement("li");
+            listElement.innerHTML = element.move.name;
+            ulArea.appendChild(listElement);             
         });
-        var x = listName.toString();
-        document.getElementById("moves").innerHTML=x;
-
 
       };
     
       let input = document.getElementById("pokeId");
       
       input.addEventListener("change",  getInput);
-      var text;
+      let text;
       function getInput(e){
             text = e.target.value;
          // console.log(text);
@@ -40,17 +41,14 @@
       
       let submit = document.getElementById("submit").addEventListener("click", function(){
           dataPoke(text);
-          removeImg();
+          removeData();
          
       });
 
-      function removeImg(){
-        var olddata=document.body.lastChild;
-        document.body.removeChild(olddata);
-        
+      function removeData(){
+        var oldImg=document.querySelector("#image").lastChild;
+        document.querySelector("#image").removeChild(oldImg);
+        document.querySelector("#movesList").innerHTML="";
         }
 
-      
-      
-    // dataPoke(42);
 })();
