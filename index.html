@@ -10,33 +10,39 @@
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
-   
-    <input id="pokeId" placeholder="Enter the name or the id" name="name"/>
-    <button id="submit" value="button">Search Pokemon</button>
-      
-<h3 class="container" id="name">
-</h3>
-<p class="container" id="id">
-</p>
-      
-<h3 class="container" id="prevName">
-</h3>
-<p class="container" id="prevId">
-</p>
-<div class="container" id="prevImage">
-  
-</div>
-<div class="container" id="image">
-  
-</div>
 
-<p class="container" id="moves">
-</p>
-
-<div class="container" id="list">
-    <ul id="movesList"></ul>
-</div>
+<div class="main">
     
+    <div class="left">
+        
+        <input id="pokeId" placeholder="Enter the name or the id" name="name"/>
+        <button id="submit" value="button">Pokedex</button>
+         <div class="contentLeft">
+            <div class="container">
+                <h3 id="name"></h3>
+            </div> 
+
+            <div class="container" id="image">
+            </div>
+
+
+            <div class="container" id="list">
+                <p id="moves"></p>
+                <ul id="movesList"></ul>
+            </div>
+        </div>
+    </div>
+    <div class="right">
+        <div class="contentRight">
+            <div class="container">
+                <h4 id="prevName"></h4>
+            </div>  
+
+            <div class="container" id="prevImage">
+            </div>
+        </div>
+    </div>
+</div>
     <script src="main.js"></script>
     
 </body>

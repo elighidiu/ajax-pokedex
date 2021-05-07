@@ -12,8 +12,7 @@
             const responsePrevious = await fetch(`https://pokeapi.co/api/v2/pokemon/${previousPoke.name}`);  //using the name of the previous species get more data (like the id and image - this info is in our first used api)
 
             const dataPrevious = await responsePrevious.json();
-            document.getElementById("prevName").innerHTML=`Evolved from ${dataPrevious.name}`;
-            document.getElementById("prevId").innerHTML=dataPrevious.id;
+            document.getElementById("prevName").innerHTML=`Evolved from ${dataPrevious.name}(#${dataPrevious.id})`;
 
             let prevImageArea = document.getElementById("prevImage"); 
             const prevImg = document.createElement("img"); //create img
@@ -21,11 +20,11 @@
             prevImageArea.appendChild(prevImg); //append the image to the div 
 
         } else {
-            console.log("No previous evolution");
+            document.getElementById("prevName").innerHTML="No previous evolution";
+            //console.log("No previous evolution");
         }
 
-        document.getElementById("name").innerHTML=data.name;
-        document.getElementById("id").innerHTML=data.id;
+        document.getElementById("name").innerHTML=`${data.name}(#${data.id})`;
               
         let imageArea = document.getElementById("image"); 
         const img = document.createElement("img"); //create img
@@ -33,6 +32,7 @@
         imageArea.appendChild(img); //append the image to the div 
 
         // get a list with first 5 moves
+        
         let ulArea = document.getElementById("movesList");
         for (let i=0; i<5; i++){
             const listElement = document.createElement("li");
@@ -53,6 +53,7 @@
       
       input.addEventListener("change",  getInput);
       let text;
+    
       function getInput(e){
             text = e.target.value;
             if(isNaN("text")){ //if the input is not a number, then change the string to lower case
