@@ -73,12 +73,12 @@
 
       function removeData(){
         document.querySelector("#movesList").innerHTML="";
+        document.querySelector("#name").innerText="";
+        document.querySelector("#prevName").innerHTML="";
         var oldImg = document.querySelector("#image").lastChild;
         document.querySelector("#image").removeChild(oldImg);
         var oldPrevImg = document.querySelector("#prevImage").lastChild;
-        document.querySelector("#prevImage").removeChild(oldPrevImg);
-        document.querySelector("#prevName").innerHTML="";
-         
-        }
+        document.querySelector("#prevImage").removeChild(oldPrevImg);         
+     }
 
 })();
