@@ -6,7 +6,8 @@
                  
         const data = await response.json();
         const dataSpecies = await responseSpecies.json();
-        
+        console.log(data);
+
         if(dataSpecies.evolves_from_species!==null) {
             let previousPoke = dataSpecies.evolves_from_species;  //get the name of the previous species
             const responsePrevious = await fetch(`https://pokeapi.co/api/v2/pokemon/${previousPoke.name}`);  //using the name of the previous species get more data (like the id and image - this info is in our first used api)
@@ -37,7 +38,8 @@
         for (let i=0; i<5; i++){
             const listElement = document.createElement("li");
             listElement.innerHTML = data.moves[i].move.name;
-            ulArea.appendChild(listElement);  
+            ulArea.appendChild(listElement); 
+            console.log(data.moves[i].move.name);
         }
 
           /*    Instead of displaying all moves, I will only display 5
@@ -56,27 +58,27 @@
     
       function getInput(e){
             text = e.target.value;
-            if(isNaN("text")){ //if the input is not a number, then change the string to lower case
+            if(isNaN(text)){ //if the input is not a number, then change the string to lower case
                 text = text.toLowerCase();
             }
          // console.log(text);
             return text;
       };
       
-      let submit = document.getElementById("submit").addEventListener("click", function(){
-          dataPoke(text);
-          removeData();
-         
-      });
+        document.getElementById("submit").addEventListener("click", function(){
+            dataPoke(text); 
+            removeData();  
+                     
+        });
 
       function removeData(){
+        document.querySelector("#movesList").innerHTML="";
         var oldImg = document.querySelector("#image").lastChild;
         document.querySelector("#image").removeChild(oldImg);
         var oldPrevImg = document.querySelector("#prevImage").lastChild;
         document.querySelector("#prevImage").removeChild(oldPrevImg);
-        document.querySelector("#movesList").innerHTML="";
         document.querySelector("#prevName").innerHTML="";
-        document.querySelector("#prevId").innerHTML="";
+         
         }
 
 })();

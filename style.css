@@ -1,7 +1,16 @@
 
+body {
+    font-family: 'Press Start 2P', cursive;
+  }
+  
+h1{
+    margin:50 auto;
+    width: 300px;
+}
+
 div.main {
     width: 800px;
-    margin:100 auto;
+    margin:50 auto;
     /* background-color: #fb1368; */
     
     display: flex;
@@ -16,10 +25,11 @@ div.left{
     padding: 35px 35px;
 }
 div.contentLeft {
-    background-color:aliceblue;
+    background-color:aquamarine;
     margin: 40 20 40 0;
     padding: 15px;
     border-radius: 10px;
+    border:5px solid #585858;
    
 }
 
@@ -32,13 +42,14 @@ div.right {
 
 div.contentRight {
     background-color:#585858;
-    margin: 100 20 40 20;
+    margin: 105 20 40 20;
     padding: 15px;
     border-radius: 10px;
     border:5px solid #dedede;
 }
 
-body {
-    font-family: 'Press Start 2P', cursive;
-  }
-
+.button, .input {
+    padding: 5px 25px;
+    border-radius: 10px;
+    border:2px solid #585858;
+}
